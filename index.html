@@ -17,7 +17,7 @@
     <div class="app-container">
         <header id="navbar">
             <nav>
-                <div class="logo">&lt;Navin /&gt;</div>
+                <div class="logo"><a href="index.html"><span class="prompt">></span> Navin<span class="cursor">_</span></a></div>
                 <ul class="nav-links">
                     <li><a href="#about" data-text="About">About</a></li>
                     <li><a href="#experience" data-text="Experience">Experience</a></li>
@@ -47,7 +47,9 @@
                     </p>
                     <div class="cta-group">
                         <a href="#projects" class="btn btn-primary">View Work</a>
-                        <a href="mailto:navinkumar357@gmail.com" class="btn btn-outline">Email Me</a>
+                        <a href="mailto:navinkumar357@gmail.com" class="btn btn-terminal">
+                            Initialize_Comms
+                        </a>
                     </div>
                 </div>
                 <div class="scroll-indicator">
@@ -195,9 +197,10 @@ class Engineer:
                             <span class="tech-item"><i class="fas fa-server"></i> ECS</span>
                             <span class="tech-item"><i class="fas fa-cogs"></i> SageMaker</span>
                             <span class="tech-item"><i class="fab fa-docker"></i> Docker</span>
-                            <span class="tech-item"><i class="fas fa-code-branch"></i> Terraform/CDK</span>
-                            <span class="tech-item"><i class="fas fa-sync"></i> CI/CD</span>
+                            <span class="tech-item"><i class="fas fa-code-branch"></i> CDK</span>
+                            <span class="tech-item"><i class="fas fa-sync"></i> bash</span>
                             <span class="tech-item"><i class="fas fa-cloud"></i> DynamoDB</span>
+                            <span class="tech-item"><i class="fas fa-cloud"></i> Bedrock</span>
                         </div>
                     </div>
 
@@ -237,7 +240,7 @@ class Engineer:
                         </div>
                     </a>
                     <!-- Project 2 -->
-                    <div class="project-card card" data-tilt>
+                    <a href="project-serverless.html" class="project-card card" data-tilt style="display: block; text-decoration: none;">
                         <div class="card-img-holder" style="background-image: url('assets/images/serverless-tracking.jpg');"></div>
                         <div class="card-content">
                             <h3>Serverless Tracking</h3>
@@ -247,9 +250,9 @@ class Engineer:
                                 <span>NoSQL</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- Project 3 -->
-                    <div class="project-card card" data-tilt>
+                    <a href="project-edge-ai.html" class="project-card card" data-tilt style="display: block; text-decoration: none;">
                         <div class="card-img-holder" style="background-image: url('assets/images/eye-tracking.jpg');"></div>
                         <div class="card-content">
                             <h3>Edge AI Optimization</h3>
@@ -259,7 +262,7 @@ class Engineer:
                                 <span>C++</span>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </section>
 

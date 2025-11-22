@@ -234,6 +234,48 @@ nav {
     box-shadow: 0 5px 20px rgba(74, 222, 128, 0.4);
 }
 
+/* Terminal Button Style with Rotating Slash */
+.btn-terminal {
+    background: rgba(5, 16, 11, 0.8);
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    font-family: var(--font-code);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-terminal::before {
+    content: '/';
+    display: inline-block;
+    animation: spin-slash 0.8s steps(4) infinite;
+    font-weight: bold;
+}
+
+@keyframes spin-slash {
+    0% { content: '/'; }
+    25% { content: '-'; }
+    50% { content: '\\'; }
+    75% { content: '|'; }
+    100% { content: '/'; }
+}
+
+.btn-terminal:hover {
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    transform: translateY(-2px);
+    text-shadow: 0 0 5px var(--accent-cyan);
+}
+
 /* Sections */
 .section {
     padding: 6rem 2rem;

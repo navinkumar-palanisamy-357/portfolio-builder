@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud GenAI Prototypes | Project Case Study</title>
+    <title>Serverless Object Tracking | Project Case Study</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,13 +33,13 @@
         <main>
             <section class="section" style="padding-top: 120px;">
                 <div class="project-detail-header">
-                    <h1 class="glitch" data-text="Cloud GenAI Prototypes" style="font-size: 3rem; margin-bottom: 1rem;">Cloud GenAI Prototypes</h1>
+                    <h1 class="glitch" data-text="Serverless Object Tracking" style="font-size: 3rem; margin-bottom: 1rem;">Serverless Object Tracking</h1>
                     <div class="tech-stack" style="justify-content: center; margin-bottom: 2rem;">
-                        <span>AWS Bedrock</span>
-                        <span>RAG</span>
-                        <span>LangChain</span>
+                        <span>AWS Lambda</span>
+                        <span>DynamoDB</span>
                         <span>Python</span>
-                        <span>Vector DB</span>
+                        <span>S3</span>
+                        <span>API Gateway</span>
                     </div>
                 </div>
 
@@ -50,22 +50,21 @@
                         <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
                             <h3><i class="fas fa-flag-checkered" style="color: var(--accent-cyan);"></i> The Challenge</h3>
                             <p style="color: var(--text-muted); margin-top: 1rem;">
-                                Analyzing user attention data (eye-tracking) manually is a time-intensive process. 
-                                Research teams spend hours interpreting gaze plots and heatmaps to derive actionable insights for UX studies. 
-                                The goal was to automate this qualitative analysis to speed up the feedback loop.
+                                The existing infrastructure for object tracking was built on always-on EC2 instances, leading to significant idle time and high costs during periods of low traffic. 
+                                Scaling to handle burst workloads required manual intervention and slow boot times, creating latency bottlenecks for real-time tracking applications.
                             </p>
                         </div>
 
                         <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
                             <h3><i class="fas fa-lightbulb" style="color: var(--accent-cyan);"></i> The Solution</h3>
                             <p style="color: var(--text-muted); margin-top: 1rem;">
-                                I architected a <strong>Retrieval-Augmented Generation (RAG)</strong> pipeline on AWS. 
-                                By integrating computer vision outputs (gaze coordinates, fixation duration) with Large Language Models (LLMs) via <strong>AWS Bedrock</strong>, the system can "read" the attention data and generate natural language reports automatically.
+                                I re-architected the entire backend to a fully <strong>Serverless</strong> model on AWS. 
+                                By migrating compute logic to <strong>AWS Lambda</strong> and state management to <strong>DynamoDB</strong> (NoSQL), the system became event-driven, scaling automatically from 0 to 1000+ concurrent requests within seconds.
                             </p>
                             <ul style="margin-top: 1rem; padding-left: 1.5rem; color: var(--text-muted); list-style-type: disc;">
-                                <li>Developed multi-modal agents combining vision and text.</li>
-                                <li>Implemented vector search for semantic retrieval of past study insights.</li>
-                                <li>Orchestrated workflows using <strong>LangChain</strong> and <strong>AWS Lambda</strong>.</li>
+                                <li>Designed a high-throughput event pipeline using S3 triggers and Lambda.</li>
+                                <li>Optimized DynamoDB access patterns for single-digit millisecond latency.</li>
+                                <li>Implemented Infrastructure as Code (IaC) for reproducible deployments.</li>
                             </ul>
                         </div>
 
@@ -73,12 +72,12 @@
                             <h3><i class="fas fa-chart-line" style="color: var(--accent-cyan);"></i> Key Outcomes</h3>
                             <div class="stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
                                 <div style="text-align: center;">
-                                    <h4 style="font-size: 2.5rem; color: var(--accent-purple);">80%</h4>
-                                    <p style="font-size: 0.9rem; color: var(--text-muted);">Reduction in Reporting Time</p>
+                                    <h4 style="font-size: 2.5rem; color: var(--accent-purple);">12x</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);">Cost Reduction</p>
                                 </div>
                                 <div style="text-align: center;">
-                                    <h4 style="font-size: 2.5rem; color: var(--accent-purple);">12x</h4>
-                                    <p style="font-size: 0.9rem; color: var(--text-muted);">Cost Efficiency vs Legacy Ops</p>
+                                    <h4 style="font-size: 2.5rem; color: var(--accent-purple);">Auto</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);">Zero-Maintenance Scaling</p>
                                 </div>
                             </div>
                         </div>
@@ -95,15 +94,15 @@
                                 </li>
                                 <li>
                                     <strong style="color: var(--accent-cyan); display: block;">Timeline</strong>
-                                    Jan 2025 - Present
+                                    July 2021 - Present
                                 </li>
                                 <li>
                                     <strong style="color: var(--accent-cyan); display: block;">Team</strong>
-                                    Cloud Intelligence R&D
+                                    Cloud Platform Engineering
                                 </li>
                                 <li>
                                     <strong style="color: var(--accent-cyan); display: block;">Core Tech</strong>
-                                    Python, AWS, LLMs
+                                    AWS Serverless, Python
                                 </li>
                             </ul>
                             <a href="mailto:navinkumar357@gmail.com" class="btn btn-terminal">
