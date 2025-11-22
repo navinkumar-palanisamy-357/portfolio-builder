@@ -3,29 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navinkumar Palanisamy | Data Science Engineer</title>
+    <title>Navinkumar Palanisamy | AI & Deep Learning Engineer</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <!-- Particle Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container">
+        <header id="navbar">
             <nav>
-                <div class="logo">NAVINKUMAR</div>
+                <div class="logo"><a href="index.html"><span class="prompt">></span> Navin<span class="cursor">_</span></a></div>
                 <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#about" data-text="About">About</a></li>
+                    <li><a href="#experience" data-text="Experience">Experience</a></li>
+                    <li><a href="#skills" data-text="Skills">Skills</a></li>
+                    <li><a href="#projects" data-text="Projects">Projects</a></li>
                 </ul>
                 <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
                 </div>
             </nav>
         </header>
@@ -34,26 +36,64 @@
             <!-- Hero Section -->
             <section id="hero" class="hero-section">
                 <div class="hero-content">
-                    <p class="greeting">HI, I'M</p>
-                    <h1 class="typing-effect">Navinkumar Palanisamy</h1>
-                    <p class="sub-text">Data Science Engineer | Deep Learning | Cloud-Native ML (AWS)</p>
-                    <a href="#contact" class="cta-button">Get in Touch</a>
+                    <div class="glitch-wrapper">
+                        <h1 class="glitch" data-text="Navinkumar Palanisamy">Navinkumar Palanisamy</h1>
+                    </div>
+                    <h2 class="typing-container">
+                        I build <span class="txt-type" data-wait="3000" data-words='["AI Agents", "Deep Learning Models", "Cloud-Native ML", "RAG Pipelines"]'></span>
+                    </h2>
+                    <p class="hero-sub">
+                        Transforming attention data into actionable insights with GenAI & Computer Vision.
+                    </p>
+                    <div class="cta-group">
+                        <a href="#projects" class="btn btn-primary">View Work</a>
+                        <a href="mailto:navinkumar357@gmail.com" class="btn btn-terminal">
+                            Initialize_Comms
+                        </a>
+                    </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="circle-bg"></div>
+                <div class="scroll-indicator">
+                    <span></span>
                 </div>
             </section>
 
             <!-- About Section -->
             <section id="about" class="section">
-                <h2 class="section-title">About <span>Me</span></h2>
-                <div class="about-content">
+                <div class="section-header">
+                    <h2 class="section-title">System Status: <span class="highlight">Online</span></h2>
+                    <div class="line"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-visual">
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <pre><code>
+class Engineer:
+    def __init__(self):
+        self.name = "Navinkumar"
+        self.role = "Data Science Engineer"
+        self.focus = ["Deep Learning", "AWS", "GenAI"]
+        self.location = "Stockholm, Sweden"
+
+    def solve_problem(self, data):
+        insights = self.analyze(data)
+        return insights
+                            </code></pre>
+                        </div>
+                    </div>
                     <div class="about-text">
-                        <h3>Professional Summary</h3>
+                        <h3>// Professional Summary</h3>
                         <p>
-                            I am a Data Science Engineer with 4+ years of experience in deep learning, computer vision, and cloud-native ML on AWS. 
-                            I specialize in eye-tracking and user-attention analytics, working in cross-functional teams to design, optimize, and deploy models for SaaS products. 
-                            Currently, I am focused on building LLM-driven agentic and RAG workflows on AWS that automatically interpret attention data, significantly reducing manual analysis time.
+                            Data Science Engineer with 4+ years of experience architecting high-performance ML solutions. 
+                            Specializing in <span class="highlight">eye-tracking analytics</span> and <span class="highlight">cloud-native deployments</span>.
+                        </p>
+                        <p>
+                            Currently leveraging <strong>LLM-driven agents</strong> and <strong>RAG workflows</strong> on AWS to revolutionize how attention data is interpreted. 
+                            I bridge the gap between complex model research and scalable production systems.
                         </p>
                     </div>
                 </div>
@@ -61,33 +101,53 @@
 
             <!-- Experience Section -->
             <section id="experience" class="section">
-                <h2 class="section-title">Experience</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Execution Logs</h2>
+                    <div class="line"></div>
+                </div>
                 <div class="timeline">
                     <!-- Job 1 -->
                     <div class="timeline-item">
-                        <div class="timeline-date">Jan 2025 - Present</div>
-                        <div class="timeline-content">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content card">
+                            <div class="date">Jan 2025 - Present</div>
                             <h3>Cloud Intelligence R&D Team</h3>
-                            <span class="company">Tobii AB | Stockholm, Sweden</span>
-                            <p>Developing cloud-based GenAI prototypes using AWS Bedrock and RAG pipelines to generate automated study insights. Standardizing orchestration patterns for combining computer vision models with LLMs.</p>
+                            <span class="company">Tobii AB | Stockholm</span>
+                            <p>Prototyping GenAI & RAG pipelines using AWS Bedrock. Orchestrating multi-modal agents (Vision + LLM) to automate study insights.</p>
+                            <div class="tags">
+                                <span>GenAI</span>
+                                <span>AWS Bedrock</span>
+                                <span>RAG</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Job 2 -->
                     <div class="timeline-item">
-                        <div class="timeline-date">July 2021 - Present</div>
-                        <div class="timeline-content">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content card">
+                            <div class="date">July 2021 - Present</div>
                             <h3>Data Science Engineer</h3>
-                            <span class="company">Tobii AB | Stockholm, Sweden</span>
-                            <p>Deployed optimized eye-tracking models (OpenVINO) achieving 4x faster inference. Architected serverless AWS solutions (Lambda, DynamoDB) cutting costs by 12x. Built internal AI agents for automated reporting.</p>
+                            <span class="company">Tobii AB | Stockholm</span>
+                            <p>Optimized OpenVINO models (4x faster). Architected serverless AWS solutions (Lambda, DynamoDB) reducing costs by 12x.</p>
+                            <div class="tags">
+                                <span>OpenVINO</span>
+                                <span>AWS Lambda</span>
+                                <span>DynamoDB</span>
+                            </div>
                         </div>
                     </div>
                     <!-- Job 3 -->
                     <div class="timeline-item">
-                        <div class="timeline-date">Jan 2021 - June 2021</div>
-                        <div class="timeline-content">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content card">
+                            <div class="date">Jan 2021 - June 2021</div>
                             <h3>Master Thesis Student</h3>
-                            <span class="company">Tobii AB | Stockholm, Sweden</span>
-                            <p>Optimized webcam eye-tracking models using pruning and quantization, achieving ~3.5x size reduction and 36% lower latency.</p>
+                            <span class="company">Tobii AB | Stockholm</span>
+                            <p>Model quantization & pruning for webcam eye-tracking. Reduced model size by 3.5x and latency by 36%.</p>
+                            <div class="tags">
+                                <span>Quantization</span>
+                                <span>Computer Vision</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -95,86 +155,124 @@
 
             <!-- Skills Section -->
             <section id="skills" class="section">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">
-                        <h4>Machine Learning & AI</h4>
-                        <p>Deep Learning, Computer Vision, PyTorch, TensorFlow, OpenCV, ONNX, OpenVINO, CNNs, Transformers</p>
+                <div class="section-header">
+                    <h2 class="section-title">Tech Stack Protocols</h2>
+                    <div class="line"></div>
+                </div>
+                
+                <div class="tech-streams">
+                    <!-- Stream 1: AI & ML (Left) -->
+                    <div class="stream-label">AI & Deep Learning</div>
+                    <div class="stream-container" data-direction="left" data-speed="40">
+                        <div class="stream-track">
+                            <span class="tech-item"><i class="fas fa-brain"></i> PyTorch</span>
+                            <span class="tech-item"><i class="fas fa-network-wired"></i> TensorFlow</span>
+                            <span class="tech-item"><i class="fas fa-eye"></i> OpenCV</span>
+                            <span class="tech-item"><i class="fas fa-project-diagram"></i> ONNX</span>
+                            <span class="tech-item"><i class="fas fa-microchip"></i> OpenVINO</span>
+                            <span class="tech-item"><i class="fas fa-layer-group"></i> CNNs</span>
+                            <span class="tech-item"><i class="fas fa-cubes"></i> Transformers</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <h4>GenAI & LLMs</h4>
-                        <p>LangChain, RAG, Agentic Workflows, AWS Bedrock, Prompt Engineering, Vector Search</p>
+
+                    <!-- Stream 2: GenAI (Right) -->
+                    <div class="stream-label">Generative AI & LLMs</div>
+                    <div class="stream-container" data-direction="right" data-speed="50">
+                        <div class="stream-track">
+                            <span class="tech-item"><i class="fas fa-link"></i> LangChain</span>
+                            <span class="tech-item"><i class="fas fa-search"></i> RAG</span>
+                            <span class="tech-item"><i class="fab fa-aws"></i> AWS Bedrock</span>
+                            <span class="tech-item"><i class="fas fa-robot"></i> Agentic Workflows</span>
+                            <span class="tech-item"><i class="fas fa-database"></i> Vector DBs</span>
+                            <span class="tech-item"><i class="fas fa-comment-dots"></i> Prompt Eng</span>
+                            <span class="tech-item"><i class="fas fa-magic"></i> Stable Diffusion</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <h4>Cloud & DevOps</h4>
-                        <p>AWS (Lambda, ECS, S3, DynamoDB, SageMaker), Docker, CI/CD, GitHub Actions, IaC (AWS CDK)</p>
+
+                    <!-- Stream 3: Cloud & DevOps (Left) -->
+                    <div class="stream-label">Cloud Infrastructure</div>
+                    <div class="stream-container" data-direction="left" data-speed="45">
+                        <div class="stream-track">
+                            <span class="tech-item"><i class="fab fa-aws"></i> AWS Lambda</span>
+                            <span class="tech-item"><i class="fas fa-server"></i> ECS</span>
+                            <span class="tech-item"><i class="fas fa-cogs"></i> SageMaker</span>
+                            <span class="tech-item"><i class="fab fa-docker"></i> Docker</span>
+                            <span class="tech-item"><i class="fas fa-code-branch"></i> CDK</span>
+                            <span class="tech-item"><i class="fas fa-sync"></i> bash</span>
+                            <span class="tech-item"><i class="fas fa-cloud"></i> DynamoDB</span>
+                            <span class="tech-item"><i class="fas fa-cloud"></i> Bedrock</span>
+                        </div>
                     </div>
-                    <div class="skill-card">
-                        <h4>Languages</h4>
-                        <p>Python, C, C++, SQL</p>
+
+                    <!-- Stream 4: Languages (Right) -->
+                    <div class="stream-label">Core Languages</div>
+                    <div class="stream-container" data-direction="right" data-speed="35">
+                        <div class="stream-track">
+                            <span class="tech-item"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-item"><i class="fas fa-code"></i> C++</span>
+                            <span class="tech-item"><i class="fas fa-database"></i> SQL</span>
+                            <span class="tech-item"><i class="fas fa-terminal"></i> Bash</span>
+                            <span class="tech-item"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tech-item"><i class="fab fa-git-alt"></i> Git</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Projects Section -->
             <section id="projects" class="section">
-                <h2 class="section-title">Key Projects</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Deployed Modules</h2>
+                    <div class="line"></div>
+                </div>
                 <div class="projects-grid">
                     <!-- Project 1 -->
-                    <div class="project-card">
-                        <!-- Cloud/AI Image -->
-                        <div class="project-image" style="background-image: url('assets/images/cloud-genai.jpg');"></div>
-                        <div class="project-info">
+                    <a href="project-genai.html" class="project-card card" data-tilt style="display: block; text-decoration: none;">
+                        <div class="card-img-holder" style="background-image: url('assets/images/cloud-genai.jpg');"></div>
+                        <div class="card-content">
                             <h3>Cloud GenAI Prototypes</h3>
-                            <p>Integrated gaze data with LLMs to automate study insights, reducing manual report time by ~80%.</p>
-                            <!-- <a href="#">View Details</a> -->
+                            <p>Automated attention data analysis using LLMs. Reduced manual reporting time by 80% via RAG workflows.</p>
+                            <div class="tech-stack">
+                                <span>LLM</span>
+                                <span>Python</span>
+                                <span>AWS</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- Project 2 -->
-                    <div class="project-card">
-                        <!-- Serverless/Data Image -->
-                        <div class="project-image" style="background-image: url('assets/images/serverless-tracking.jpg');"></div>
-                        <div class="project-info">
-                            <h3>Serverless Object Tracking</h3>
-                            <p>Designed an AWS Lambda & DynamoDB solution for object tracking, cutting infrastructure costs by ~12x.</p>
+                    <a href="project-serverless.html" class="project-card card" data-tilt style="display: block; text-decoration: none;">
+                        <div class="card-img-holder" style="background-image: url('assets/images/serverless-tracking.jpg');"></div>
+                        <div class="card-content">
+                            <h3>Serverless Tracking</h3>
+                            <p>High-scale object tracking pipeline on AWS Lambda & DynamoDB. 12x cost reduction over EC2.</p>
+                            <div class="tech-stack">
+                                <span>Serverless</span>
+                                <span>NoSQL</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                     <!-- Project 3 -->
-                    <div class="project-card">
-                        <!-- Code/Eye Tracking Image -->
-                        <div class="project-image" style="background-image: url('assets/images/eye-tracking.jpg');"></div>
-                        <div class="project-info">
-                            <h3>Eye-Tracking Optimization</h3>
-                            <p>Ported models to OpenVINO with pruning/quantization, achieving 4x faster inference in production.</p>
+                    <a href="project-edge-ai.html" class="project-card card" data-tilt style="display: block; text-decoration: none;">
+                        <div class="card-img-holder" style="background-image: url('assets/images/eye-tracking.jpg');"></div>
+                        <div class="card-content">
+                            <h3>Edge AI Optimization</h3>
+                            <p>Real-time eye tracking on edge devices. Ported to OpenVINO with aggressive quantization.</p>
+                            <div class="tech-stack">
+                                <span>OpenVINO</span>
+                                <span>C++</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </section>
 
-            <!-- Contact Section -->
-            <section id="contact" class="section">
-                <h2 class="section-title">Contact</h2>
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <p>I'm currently based in <strong>Sollentuna, Sweden</strong>.</p>
-                        <p>Feel free to reach out for collaborations or opportunities.</p>
-                        <p><strong>Email:</strong> navinkumar357@gmail.com</p>
-                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/navin-kumar-5079a5160" target="_blank">View Profile</a></p>
-                    </div>
-                    <form class="contact-form">
-                        <input type="text" placeholder="Name" required>
-                        <input type="email" placeholder="Email" required>
-                        <textarea placeholder="Message" rows="5" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
-                </div>
-            </section>
         </main>
 
         <footer>
-            <p>&copy; 2025 Navinkumar Palanisamy. All rights reserved.</p>
+            <p>System Design by &copy; 2025 Navinkumar Palanisamy</p>
         </footer>
     </div>
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>

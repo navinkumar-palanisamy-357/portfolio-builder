@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud GenAI Prototypes | Project Case Study</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container">
+        <header id="navbar">
+            <nav>
+                <div class="logo"><a href="index.html">&lt;Navin /&gt;</a></div>
+                <ul class="nav-links">
+                    <li><a href="index.html#projects">Back to Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="section" style="padding-top: 120px;">
+                <div class="project-detail-header">
+                    <h1 class="glitch" data-text="Cloud GenAI Prototypes" style="font-size: 3rem; margin-bottom: 1rem;">Cloud GenAI Prototypes</h1>
+                    <div class="tech-stack" style="justify-content: center; margin-bottom: 2rem;">
+                        <span>AWS Bedrock</span>
+                        <span>RAG</span>
+                        <span>LangChain</span>
+                        <span>Python</span>
+                        <span>Vector DB</span>
+                    </div>
+                </div>
+
+                <div class="project-content-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; max-width: 1200px; margin: 0 auto;">
+                    
+                    <!-- Left Column: Main Content -->
+                    <div class="project-main">
+                        <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
+                            <h3><i class="fas fa-flag-checkered" style="color: var(--accent-cyan);"></i> The Challenge</h3>
+                            <p style="color: var(--text-muted); margin-top: 1rem;">
+                                Analyzing user attention data (eye-tracking) manually is a time-intensive process. 
+                                Research teams spend hours interpreting gaze plots and heatmaps to derive actionable insights for UX studies. 
+                                The goal was to automate this qualitative analysis to speed up the feedback loop.
+                            </p>
+                        </div>
+
+                        <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
+                            <h3><i class="fas fa-lightbulb" style="color: var(--accent-cyan);"></i> The Solution</h3>
+                            <p style="color: var(--text-muted); margin-top: 1rem;">
+                                I architected a <strong>Retrieval-Augmented Generation (RAG)</strong> pipeline on AWS. 
+                                By integrating computer vision outputs (gaze coordinates, fixation duration) with Large Language Models (LLMs) via <strong>AWS Bedrock</strong>, the system can "read" the attention data and generate natural language reports automatically.
+                            </p>
+                            <ul style="margin-top: 1rem; padding-left: 1.5rem; color: var(--text-muted); list-style-type: disc;">
+                                <li>Developed multi-modal agents combining vision and text.</li>
+                                <li>Implemented vector search for semantic retrieval of past study insights.</li>
+                                <li>Orchestrated workflows using <strong>LangChain</strong> and <strong>AWS Lambda</strong>.</li>
+                            </ul>
+                        </div>
+
+                        <div class="card" style="padding: 2rem;">
+                            <h3><i class="fas fa-chart-line" style="color: var(--accent-cyan);"></i> Key Outcomes</h3>
+                            <div class="stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem;">
+                                <div style="text-align: center;">
+                                    <h4 style="font-size: 2.5rem; color: var(--accent-purple);">80%</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);">Reduction in Reporting Time</p>
+                                </div>
+                                <div style="text-align: center;">
+                                    <h4 style="font-size: 2.5rem; color: var(--accent-purple);">12x</h4>
+                                    <p style="font-size: 0.9rem; color: var(--text-muted);">Cost Efficiency vs Legacy Ops</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Sidebar Info -->
+                    <div class="project-sidebar">
+                        <div class="card" style="padding: 2rem; position: sticky; top: 100px;">
+                            <h4 style="color: var(--text-main); margin-bottom: 1rem;">Project Info</h4>
+                            <ul style="list-style: none; color: var(--text-muted); font-size: 0.9rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <li>
+                                    <strong style="color: var(--accent-cyan); display: block;">Role</strong>
+                                    Data Science Engineer
+                                </li>
+                                <li>
+                                    <strong style="color: var(--accent-cyan); display: block;">Timeline</strong>
+                                    Jan 2025 - Present
+                                </li>
+                                <li>
+                                    <strong style="color: var(--accent-cyan); display: block;">Team</strong>
+                                    Cloud Intelligence R&D
+                                </li>
+                                <li>
+                                    <strong style="color: var(--accent-cyan); display: block;">Core Tech</strong>
+                                    Python, AWS, LLMs
+                                </li>
+                            </ul>
+                            <a href="mailto:navinkumar357@gmail.com" class="btn btn-terminal">
+                                Initialize_Comms
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>System Design by &copy; 2025 Navinkumar Palanisamy</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
