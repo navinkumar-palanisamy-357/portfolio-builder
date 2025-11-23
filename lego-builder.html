@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Builder | Off-Duty Builds</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container">
+        <header id="navbar">
+            <nav>
+                <div class="logo-tabs">
+                    <a href="index.html" class="logo-tab">On-duty</a>
+                    <a href="personal.html" class="logo-tab active">Off-duty</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about" data-text="About">About</a></li>
+                    <li><a href="index.html#experience" data-text="Experience">Experience</a></li>
+                    <li><a href="index.html#skills" data-text="Skills">Skills</a></li>
+                    <li><a href="index.html#projects" data-text="Projects">Projects</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Hero / Intro -->
+            <section class="section" id="lego-hero">
+                <div class="section-header">
+                    <h2 class="section-title">Lego Builder Logs</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="about-text">
+                    <p>
+                        When I need a different kind of problem to solve, I swap neural nets for brick sets.
+                        This is where I park my favorite builds, from tiny speed champions to slow, detailed
+                        Technic projects.
+                    </p>
+                    <p>
+                        Think of it as a visual changelog of weekend sessions spent in flow, one brick at a time.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Lego Gallery Placeholder -->
+            <section class="section" id="lego-gallery">
+                <div class="section-header">
+                    <h2 class="section-title">Build Gallery</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="projects-grid">
+                    <!-- Example card 1 -->
+                    <div class="card photo-card">
+                        <div class="card-content">
+                            <h3>McLaren</h3>
+                            <p>
+                                <img src="assets/lego/mclaren.jpeg" style="width: 500px; height: 500px; border-radius: 4px;" onclick="openLightbox(this)">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>System Design by &copy; 2025 Navinkumar Palanisamy</p>
+        </footer>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
