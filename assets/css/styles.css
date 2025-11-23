@@ -75,6 +75,18 @@ nav {
     -webkit-text-fill-color: transparent;
 }
 
+.cursor {
+    display: inline-block;
+    -webkit-text-fill-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 .nav-links {
     display: flex;
     gap: 2.5rem;
