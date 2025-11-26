@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Gallery | Navinkumar Palanisamy</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .gallery-container {
+            padding: 2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .gallery-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .masonry-grid {
+            display: grid;
+            grid-gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+        
+        .masonry-item {
+            width: 100%;
+            height: 400px; /* Fixed height for all items */
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--card-bg);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .masonry-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .masonry-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .masonry-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+        }
+        
+        .photo-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .photo-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255,255,255,0.9);
+            font-size: 0.85rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .back-button:hover {
+            color: var(--accent-hover);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .masonry-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="app-container">
+        <header id="navbar">
+            <nav>
+                <div class="logo-tabs">
+                    <a href="index.html" class="logo-tab">On-duty</a>
+                    <a href="personal.html" class="logo-tab active">Off-duty</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#about" data-text="About">About</a></li>
+                    <li><a href="index.html#experience" data-text="Experience">Experience</a></li>
+                    <li><a href="index.html#skills" data-text="Skills">Skills</a></li>
+                    <li><a href="index.html#projects" data-text="Projects">Projects</a></li>
+                </ul>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="gallery-container">
+                <a href="personal.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Off-Duty Logs
+                </a>
+                
+                <div class="gallery-header">
+                    <h1>Photography Gallery</h1>
+                    <p>Capturing moments, one frame at a time. Through my lens, I explore the beauty in the ordinary and the extraordinary.</p>
+                </div>
+                
+                <div class="masonry-grid" id="photo-gallery">
+                    <!-- Photo 1 -->
+                    <div class="masonry-item">
+                        <img src="assets/photography/lens1.jpeg" alt="Varenna, Italy">
+                        <div class="photo-info">
+                            <div class="photo-meta">
+                                <span>Varenna, Italy</span>
+                                <span>Nov 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 2 -->
+                    <div class="masonry-item">
+                        <img src="assets/photography/lens2.jpeg" alt="Varenna, Italy">
+                        <div class="photo-info">
+                            <div class="photo-meta">
+                                <span>Varenna, Italy</span>
+                                <span>Nov 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Photo 3 -->
+                    <div class="masonry-item">
+                        <img src="assets/photography/lens3.jpeg" alt="Varenna, Italy">
+                        <div class="photo-info">
+                            <div class="photo-meta">
+                                <span>Algarve, Portugal</span>
+                                <span>Jul 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>System Design by &copy; 2025 Navinkumar Palanisamy</p>
+        </footer>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Initialize lightbox for gallery images
+        document.addEventListener('DOMContentLoaded', function() {
+            const gallery = document.getElementById('photo-gallery');
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            const closeBtn = document.querySelector('.close-lightbox');
+            
+            // Open lightbox when clicking on gallery images
+            gallery.addEventListener('click', function(e) {
+                const img = e.target.closest('.masonry-item img');
+                if (!img) return;
+                
+                modalImg.src = img.src;
+                captionText.textContent = img.alt;
+                
+                // Show modal with animation
+                document.body.style.overflow = 'hidden';
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('show');
+                }, 10);
+            });
+            
+            // Close lightbox
+            function closeLightbox() {
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+            
+            closeBtn.onclick = closeLightbox;
+            
+            // Close when clicking outside the image
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeLightbox();
+                }
+            });
+            
+            // Close with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        });
+        
+        // Masonry layout adjustment
+        function resizeMasonryItem(item) {
+            const grid = document.querySelector('.masonry-grid');
+            const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+            const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+            const contentHeight = item.querySelector('img').height + item.querySelector('.photo-info').offsetHeight;
+            const rowSpan = Math.ceil((contentHeight + rowGap) / (rowHeight + rowGap));
+            item.style.gridRowEnd = 'span ' + rowSpan;
+        }
+        
+        function resizeAllMasonryItems() {
+            const allItems = document.querySelectorAll('.masonry-item');
+            allItems.forEach(item => {
+                resizeMasonryItem(item);
+            });
+        }
+        
+        // Wait for images to load
+        window.addEventListener('load', function() {
+            resizeAllMasonryItems();
+            
+            // Recalculate on window resize
+            window.addEventListener('resize', resizeAllMasonryItems);
+        });
+    </script>
+</body>
+</html>
