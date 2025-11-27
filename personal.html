@@ -8,7 +8,158 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Tilt & Glow Grid - Bento Layout */
+        .tilt-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            grid-template-rows: 180px 180px;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+        
+        .tilt-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            background: var(--bg-secondary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            /* Reset default transition to avoid lag, handled by JS for tilt */
+            transition: transform 0.1s ease;
+        }
+        
+        /* Layout positions */
+        .tilt-card:nth-child(1) {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+        
+        .tilt-card:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        
+        .tilt-card:nth-child(3) {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        
+        .tilt-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        /* Glow effect */
+        .tilt-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            box-shadow: inset 0 0 20px rgba(16, 185, 129, 0);
+            transition: box-shadow 0.3s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .tilt-card:hover::after {
+            box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.4), 0 0 15px rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+        }
+        
+        .tilt-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Glare effect */
+        .tilt-glare {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+            transform: translateZ(1px);
+        }
+        
+        .tilt-card:hover .tilt-glare {
+            opacity: 0.3;
+        }
+        
+        /* Caption overlay */
+        .tilt-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            color: white;
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 4;
+            pointer-events: none;
+        }
+        
+        .tilt-card:hover .tilt-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .tilt-caption span {
+            color: var(--accent-cyan);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .tilt-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 200px 150px;
+            }
+            
+            .tilt-card:nth-child(1) {
+                grid-column: 1 / span 2;
+                grid-row: 1;
+            }
+            
+            .tilt-card:nth-child(2) {
+                grid-column: 1;
+                grid-row: 2;
+            }
+            
+            .tilt-card:nth-child(3) {
+                grid-column: 2;
+                grid-row: 2;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tilt-grid {
+                display: flex;
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .tilt-card {
+                height: 240px;
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Particle Background -->
@@ -61,12 +212,23 @@
                             <div class="date">November 2022</div>
                             <h3>Petra, Jordan</h3>
                             <div class="gps-text">GPS: 30.3285° N, 35.4444° E</div>
-                            <p>Getting lost in Petra’s carved canyons, then tearing across Wadi Rum’s dunes and crashing out beneath a sky full of stars.</p>
-                            <div class="photo-grid-mini">
-                                <img src="assets/travel_photos/jordan/petra.jpeg" style="width: auto; height: 260px; border-radius: 4px;" onclick="openLightbox(this)">
-                                <img src="assets/travel_photos/jordan/wadi_rum.jpeg" style="width: auto; height: 260px; border-radius: 4px;" onclick="openLightbox(this)">
-                                <img src="assets/travel_photos/jordan/stargazing.jpeg" style="width: auto; height: 260px; border-radius: 4px;" onclick="openLightbox(this)">
-
+                            <p>Getting lost in Petra's carved canyons, then tearing across Wadi Rum's dunes and crashing out beneath a sky full of stars.</p>
+                            <div class="tilt-grid">
+                                <div class="tilt-card main-tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/jordan/petra.jpeg" alt="The Treasury at Petra">
+                                    <div class="tilt-caption"><span>01</span> The Treasury</div>
+                                </div>
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/jordan/wadi_rum.jpeg" alt="Wadi Rum Desert">
+                                    <div class="tilt-caption"><span>02</span> Wadi Rum</div>
+                                </div>
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/jordan/stargazing.jpeg" alt="Stargazing">
+                                    <div class="tilt-caption"><span>03</span> Stargazing</div>
+                                </div>
                             </div>
                         </div> 
                     </div>
@@ -77,11 +239,23 @@
                             <div class="date">May 2023</div>
                             <h3>Mount Kilimanjaro, Tanzania</h3>
                             <div class="gps-text">GPS: 3.0674° S, 37.3556° E</div>
-                            <p>From summiting Africa’s highest peak to tracking wildlife on the Serengeti plains.</p>
-                            <div class="photo-grid-mini">
-                                <img src="assets/travel_photos/tanzania/kilimanjaro.jpeg" style="width: auto; height: 260px; border-radius: 4px;" onclick="openLightbox(this)">
-                                <img src="assets/travel_photos/tanzania/mountain.jpeg" style="width: 350px; height: 260px; border-radius: 4px;" onclick="openLightbox(this)">
-                                <img src="assets/travel_photos/tanzania/safari.jpeg" style="width: 350px; height: 260px; border-radius: 4px;" onclick="openLightbox(this)">
+                            <p>From summiting Africa's highest peak to tracking wildlife on the Serengeti plains.</p>
+                            <div class="tilt-grid">
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/tanzania/kilimanjaro.jpeg" alt="Kilimanjaro Summit">
+                                    <div class="tilt-caption"><span>01</span> Summit</div>
+                                </div>
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/tanzania/mountain.jpeg" alt="Mountain Trail">
+                                    <div class="tilt-caption"><span>02</span> The Trail</div>
+                                </div>
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/tanzania/safari.jpeg" alt="Serengeti Safari">
+                                    <div class="tilt-caption"><span>03</span> Safari</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,12 +266,23 @@
                             <div class="date">July 2023</div>
                             <h3>Algarve, Portugal</h3>
                             <div class="gps-text">GPS: 37.2555° N, 8.3965° W</div>
-                            <p>Falling through Atlantic winds and red-roofed villages, skydiving the edge of Portugal’s cliffs and clouds.</p>
-                            <div class="photo-grid-mini">
-                                <img src="assets/travel_photos/portugal/sky-diving.JPG" style="width: 300px; height: 200px; border-radius: 4px;" onclick="openLightbox(this)">
-                                <img src="assets/travel_photos/portugal/after.JPG" style="width: 300px; height: 200px; border-radius: 4px;" onclick="openLightbox(this)">
-                                <img src="assets/travel_photos/portugal/albufeira.jpeg" style="width: 300px; height: 200px; border-radius: 4px;" onclick="openLightbox(this)">
-
+                            <p>Falling through Atlantic winds and red-roofed villages, skydiving the edge of Portugal's cliffs and clouds.</p>
+                            <div class="tilt-grid">
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/portugal/sky-diving.JPG" alt="Skydiving">
+                                    <div class="tilt-caption"><span>01</span> Freefall</div>
+                                </div>
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/portugal/after.JPG" alt="Post-Jump">
+                                    <div class="tilt-caption"><span>02</span> Landed</div>
+                                </div>
+                                <div class="tilt-card" data-tilt>
+                                    <div class="tilt-glare"></div>
+                                    <img src="assets/travel_photos/portugal/albufeira.jpeg" alt="Albufeira">
+                                    <div class="tilt-caption"><span>03</span> Albufeira</div>
+                                </div>
                             </div>
                         </div> 
                     </div>
@@ -155,6 +340,97 @@
     </div>
 
     <script src="assets/js/script.js"></script>
+    <script>
+        // Vanilla JS Tilt Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('[data-tilt]');
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            const closeBtn = document.querySelector('.close-lightbox');
+            
+            // Tilt effect logic
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    // Calculate rotation based on mouse position
+                    // Center is (0,0), range is roughly -15deg to 15deg
+                    const xPct = x / rect.width;
+                    const yPct = y / rect.height;
+                    
+                    const xRot = (yPct - 0.5) * 20 * -1; // Invert Y for X rotation
+                    const yRot = (xPct - 0.5) * 20;
+                    
+                    // Apply transform
+                    card.style.transform = `perspective(1000px) rotateX(${xRot}deg) rotateY(${yRot}deg) scale(1.05)`;
+                    
+                    // Move glare
+                    const glare = card.querySelector('.tilt-glare');
+                    if (glare) {
+                        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,255,255,0.3) 0%, transparent 50%)`;
+                        glare.style.opacity = '1';
+                    }
+                });
+                
+                // Reset on mouse leave
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                    
+                    const glare = card.querySelector('.tilt-glare');
+                    if (glare) {
+                        glare.style.opacity = '0';
+                    }
+                });
+                
+                // Click to open lightbox
+                card.addEventListener('click', () => {
+                    const img = card.querySelector('img');
+                    const caption = card.querySelector('.tilt-caption');
+                    // Get location from parent card h3
+                    const location = card.closest('.timeline-content').querySelector('h3').textContent;
+                    
+                    openLightbox(img.src, `${caption ? caption.textContent.replace(/^\d+\s*/, '') : img.alt} • ${location}`);
+                });
+            });
+            
+            // Lightbox functionality
+            function openLightbox(src, caption) {
+                modalImg.src = src;
+                captionText.textContent = caption || '';
+                document.body.style.overflow = 'hidden';
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            }
+            
+            function closeLightbox() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+            
+            if (closeBtn) {
+                closeBtn.onclick = closeLightbox;
+            }
+            
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeLightbox();
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
