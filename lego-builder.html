@@ -8,7 +8,240 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Back button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-family: var(--font-code);
+        }
+        
+        .back-button:hover {
+            color: var(--accent-purple);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* Lego Brick Cards */
+        .lego-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .lego-card {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            animation: buildIn 0.6s ease-out backwards;
+            background: var(--bg-secondary);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Staggered entrance animation */
+        .lego-card:nth-child(1) { animation-delay: 0.1s; }
+        .lego-card:nth-child(2) { animation-delay: 0.2s; }
+        .lego-card:nth-child(3) { animation-delay: 0.3s; }
+        .lego-card:nth-child(4) { animation-delay: 0.4s; }
+        .lego-card:nth-child(5) { animation-delay: 0.5s; }
+        .lego-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes buildIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.9) rotateX(10deg);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1) rotateX(0deg);
+            }
+        }
+        
+        /* 3D Flip on hover */
+        .lego-card:hover {
+            transform: rotateY(5deg) rotateX(-5deg) translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(16, 185, 129, 0.2),
+                0 0 0 2px rgba(16, 185, 129, 0.3);
+        }
+        
+        .lego-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        
+        .lego-card-front,
+        .lego-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .lego-card-back {
+            transform: rotateY(180deg);
+            background: var(--bg-secondary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            border: 2px solid var(--accent-cyan);
+        }
+        
+        .lego-card.flipped .lego-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .lego-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .lego-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Lego stud pattern overlay */
+        .lego-studs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent 0px,
+                transparent 18px,
+                rgba(0, 0, 0, 0.1) 18px,
+                rgba(0, 0, 0, 0.1) 20px
+            );
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.3;
+        }
+        
+        /* Card info overlay */
+        .lego-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7) 60%, transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 3;
+        }
+        
+        .lego-card:hover .lego-card-info {
+            transform: translateY(0);
+        }
+        
+        .lego-card-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            font-family: var(--font-code);
+            color: var(--accent-cyan);
+        }
+        
+        .lego-card-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: var(--font-code);
+        }
+        
+        /* Back side content */
+        .lego-card-back h3 {
+            color: var(--accent-cyan);
+            font-family: var(--font-code);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .lego-card-back .build-details {
+            text-align: center;
+            color: var(--text-muted);
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+        }
+        
+        .lego-card-back .build-details span {
+            display: block;
+            margin: 0.5rem 0;
+            color: var(--accent-cyan);
+        }
+        
+        /* Flip indicator */
+        .flip-hint {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-family: var(--font-code);
+            font-size: 0.75rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 4;
+            backdrop-filter: blur(5px);
+        }
+        
+        .lego-card:hover .flip-hint {
+            opacity: 1;
+        }
+        
+        /* Click to flip animation */
+        .lego-card.flipping {
+            animation: flipCard 0.6s ease-in-out;
+        }
+        
+        @keyframes flipCard {
+            0%, 100% { transform: rotateY(0deg) scale(1); }
+            50% { transform: rotateY(90deg) scale(0.95); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lego-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .lego-card-info {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
@@ -37,6 +270,10 @@
         <main>
             <!-- Hero / Intro -->
             <section class="section" id="lego-hero">
+                <a href="personal.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i> Back to Off-Duty Logs
+                </a>
+                
                 <div class="section-header">
                     <h2 class="section-title">Lego Builder Logs</h2>
                     <div class="line"></div>
@@ -53,22 +290,14 @@
                 </div>
             </section>
 
-            <!-- Lego Gallery Placeholder -->
+            <!-- Lego Gallery -->
             <section class="section" id="lego-gallery">
                 <div class="section-header">
                     <h2 class="section-title">Build Gallery</h2>
                     <div class="line"></div>
                 </div>
-                <div class="projects-grid">
-                    <!-- Example card 1 -->
-                    <div class="card photo-card">
-                        <div class="card-content">
-                            <h3>McLaren</h3>
-                            <p>
-                                <img src="assets/lego/mclaren.jpeg" style="width: 500px; height: 500px; border-radius: 4px;" onclick="openLightbox(this)">
-                            </p>
-                        </div>
-                    </div>
+                <div class="lego-grid" id="lego-grid">
+                    <!-- Cards will be generated by JavaScript -->
                 </div>
             </section>
         </main>
@@ -78,6 +307,135 @@
         </footer>
     </div>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+
     <script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const legoGrid = document.getElementById('lego-grid');
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
+            const captionText = document.getElementById('lightbox-caption');
+            const closeBtn = document.querySelector('.close-lightbox');
+            
+            // Your Lego builds - add more as needed
+            const builds = [
+                {
+                    name: 'McLaren F1',
+                    image: 'assets/lego/mclaren.jpeg',
+                    description: 'Technic Series',
+                    pieces: '1434 pieces',
+                    year: '2025'
+                },
+                {
+                    name: 'Mercedes F1',
+                    image: 'assets/lego/mercedes.jpeg',
+                    description: 'Technic Series',
+                    pieces: '1643 pieces',
+                    year: '2024'
+                },
+                // Add more builds here:
+            ];
+            
+            // Create Lego cards
+            function createLegoCards() {
+                legoGrid.innerHTML = '';
+                
+                builds.forEach((build, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'lego-card';
+                    card.dataset.index = index;
+                    
+                    card.innerHTML = `
+                        <div class="lego-card-inner">
+                            <div class="lego-card-front">
+                                <div class="lego-studs"></div>
+                                <img src="${build.image}" alt="${build.name}" loading="lazy">
+                                <div class="lego-card-info">
+                                    <h3>${build.name}</h3>
+                                    <p>${build.description}</p>
+                                </div>
+                                <div class="flip-hint"><i class="fas fa-sync-alt"></i> Specs</div>
+                            </div>
+                            <div class="lego-card-back">
+                                <h3>${build.name}</h3>
+                                <div class="build-details">
+                                    <span><i class="fas fa-puzzle-piece"></i> ${build.pieces}</span>
+                                    <span><i class="fas fa-calendar"></i> ${build.year}</span>
+                                    <span>${build.description}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Click to flip
+                    card.addEventListener('click', (e) => {
+                        // Don't flip if clicking the image directly (open lightbox instead)
+                        if (e.target.tagName === 'IMG') {
+                            openLightbox(build.image, build.name);
+                            return;
+                        }
+                        
+                        card.classList.toggle('flipped');
+                        card.classList.add('flipping');
+                        setTimeout(() => {
+                            card.classList.remove('flipping');
+                        }, 600);
+                    });
+                    
+                    // Double click image to open lightbox
+                    const img = card.querySelector('img');
+                    img.addEventListener('dblclick', () => {
+                        openLightbox(build.image, build.name);
+                    });
+                    
+                    legoGrid.appendChild(card);
+                });
+            }
+            
+            // Lightbox functionality
+            function openLightbox(src, caption) {
+                modalImg.src = src;
+                captionText.textContent = caption || '';
+                document.body.style.overflow = 'hidden';
+                modal.style.display = 'flex';
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+            }
+            
+            function closeLightbox() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+            
+            if (closeBtn) {
+                closeBtn.onclick = closeLightbox;
+            }
+            
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeLightbox();
+                }
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.style.display === 'flex') {
+                    closeLightbox();
+                }
+            });
+            
+            // Initialize
+            createLegoCards();
+        });
+    </script>
 </body>
 </html>
